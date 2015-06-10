@@ -14,19 +14,20 @@ npm install git://github.com/Brightspace/diff-cli.git
 
 ## Usage
 
-A diff/patch can be created for two files:
+### Create a Diff/Patch
+
+A diff/patch can be created for two files using the `createpatch` command:
 
 ```javascript
-patchcli --file1 old.css --file2 new.css -o css-diff
+createpatch --file1 old.css --file2 new.css -o css-diff
 ```
-### Options
 
-#### Error
+### Assert No Differences
 
-The CLI can be instructed to exit with an error return code if differences are found by specifying the `-e` or `--error` option. For example:
+It is possible to assert there are no differences by using the `assertnodiff` command. This is helpful in build/test environment to assert no changes to particular files (ex. comparing output of different CSS preprocessing). If differences are found, the process will exit with an error.
 
 ```javascript
-patchcli --file1 old.css --file2 new.css -o css-diff -e
+assertnodiff --file1 old.css --file2 new.css
 ```
 
 [dependencies-url]: https://david-dm.org/brightspace/diff-cli

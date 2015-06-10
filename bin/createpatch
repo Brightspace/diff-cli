@@ -2,30 +2,22 @@
 
 var fs = require('fs'),
 	chalk = require('chalk'),
+	diffutils = require('../diffutils'),
 	diff = require('diff'),
 	argv = require('yargs')
-		.usage('Usage: $0 --file1 <path> --file2 <path> -o <path> [--error|-e ]')
+		.usage('Usage: $0 --file1 <path> --file2 <path> -o <path>')
 		.option('file1', { demand: true, describe: 'Path to original file.' })
 		.option('file2', { demand: true, describe: 'Path to updated file.' })
 		.option('o', { alias: 'output', demand: true, describe: 'Path to write patch file.' })
-		.option('e', { alias: 'error', demand: false, describe: 'Whether to exit with error if there are differences.' })
 		.argv;
 
-var getFileContents = function(filePath) {
-	if (fs.existsSync(filePath)) {
-		return fs.readFileSync(filePath).toString();
-	} else {
-		return '';
-	}
-};
 
-var content1 = getFileContents(argv.file1),
-	content2 = getFileContents(argv.file2),
-	differences = diff.diffLines(content1, content2),
+var content1 = diffutils.getContents(argv.file1),
+	content2 = diffutils.getContents(argv.file2),
 	patch;
 
-if (differences && differences.length!==0 &&
-	((differences[0].count && differences[0].count!==0) || differences[0].removed || differences.added)) {
+var hasDiff = diffutils.hasDiff(argv.file1, argv.file2);
+if (hasDiff) {
 	patch = diff.createTwoFilesPatch(
 			argv.file1,
 			argv.file2,
@@ -39,11 +31,7 @@ var patchStream = fs.createWriteStream(argv.output);
 patchStream.on('finish', function() {
 	console.log(patch ? 'Differences found.\n' : 'No differences found.\n');
 	console.log(chalk.green('Patch written to ' + argv.output + '.'));
-	if (argv.error) {
-		process.exit(patch ? 1 : 0);
-	} else {
-		process.exit(0);
-	}
+	process.exit(0);
 });
 
 if (patch) {
