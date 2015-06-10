@@ -4,7 +4,8 @@
   "description": "A simple CLI wrapper around diff",
   "private": true,
   "bin": {
-    "patchcli": "bin/patchcli"
+    "assertnodiff": "bin/assertnodiff",
+    "createpatch": "bin/createpatch"
   },
   "repository": {
     "type": "git",
