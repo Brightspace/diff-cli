@@ -1,0 +1,29 @@
+{
+  "name": "diff-cli",
+  "version": "0.0.1",
+  "description": "A simple CLI wrapper around diff",
+  "private": true,
+  "bin": {
+    "patchcli": "bin/patchcli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Brightspace/diff-cli.git"
+  },
+  "keywords": [
+    "d2l",
+    "diff"
+  ],
+  "author": "D2L Corporation",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Brightspace/diff-cli/issues"
+  },
+  "homepage": "https://github.com/Brightspace/diff-cli",
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "diff": "^1.4.0",
+    "fs": "0.0.2",
+    "yargs": "^3.10.0"
+  }
+}
