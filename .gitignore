@@ -1,0 +1,4 @@
+node_modules/
+test/output
+test/diff/diff-of-diff
+test/diff/less-scss-diff-new
