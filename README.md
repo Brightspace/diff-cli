@@ -24,7 +24,7 @@ createpatch --file1 old.css --file2 new.css -o css-diff
 
 ### Assert No Differences
 
-It is possible to assert there are no differences by using the `assertnodiff` command. This is helpful in build/test environment to assert no changes to particular files (ex. comparing output of different CSS preprocessing). If differences are found, the process will exit with an error.
+To assert there are no differences, use the `assertnodiff` command. This is helpful in build/test environment to assert no changes to particular files (ex. comparing output of different CSS preprocessing). If differences are found, the process will exit with an error.
 
 ```javascript
 assertnodiff --file1 old.css --file2 new.css
