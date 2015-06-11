@@ -11,7 +11,7 @@ var chalk = require('chalk'),
 var hasDiff = diffutils.hasDiff(argv.file1, argv.file2);
 
 console.log(
-		chalk.green(hasDiff ? 'Differences found.' : 'No differences found.')
+		chalk.green(hasDiff ? 'Differences found.\n' : 'No differences found.\n')
 	);
 
 process.exit(hasDiff ? 1 : 0);
