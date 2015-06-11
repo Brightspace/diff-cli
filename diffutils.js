@@ -24,9 +24,8 @@ var hasDiff = function(file1, file2) {
 
 	var differences = getDiff(file1, file2);
 
-	var hasDiff = differences && differences.length!==0 &&
-		((differences[0].count && differences[0].count!==0) || differences[0].removed || differences.added);
-
+	var hasDiff = (differences && differences.length!==0 &&
+		((differences[0].count && differences[0].count!==0) || differences[0].removed || differences[0].added));
 	return hasDiff;
 
 };
