@@ -23,7 +23,7 @@
   "homepage": "https://github.com/Brightspace/diff-cli",
   "dependencies": {
     "chalk": "^1.0.0",
-    "diff": "^1.4.0",
+    "diff": "^4.0.2",
     "fs": "0.0.2",
     "yargs": "^3.10.0"
   }
